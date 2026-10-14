@@ -1,0 +1,331 @@
+{% extends "base.html" %}
+
+{% block title %}Dashboard | SkillSync AI{% endblock %}
+
+{% block extra_css %}
+<style>
+    .dashboard {
+        max-width: 1150px;
+        margin: auto;
+        padding: 55px 24px 80px;
+    }
+
+    .welcome {
+        margin-bottom: 35px;
+    }
+
+    .welcome .tag {
+        margin-bottom: 18px;
+    }
+
+    .welcome h1 {
+        font-size: clamp(32px, 5vw, 48px);
+        letter-spacing: -1.5px;
+        margin-bottom: 12px;
+    }
+
+    .welcome p {
+        color: #94a3b8;
+        font-size: 15px;
+        line-height: 1.8;
+    }
+
+    .section-title {
+        font-size: 23px;
+        margin: 35px 0 18px;
+    }
+
+    .overview-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        gap: 18px;
+    }
+
+    .overview-card {
+        background: #0d1b2c;
+        border: 1px solid #1e293b;
+        border-radius: 16px;
+        padding: 24px;
+        min-height: 145px;
+    }
+
+    .card-label {
+        color: #94a3b8;
+        font-size: 13px;
+        margin-bottom: 15px;
+    }
+
+    .card-value {
+        color: #67e8f9;
+        font-size: 22px;
+        font-weight: bold;
+        overflow-wrap: anywhere;
+    }
+
+    .card-note {
+        color: #94a3b8;
+        font-size: 12px;
+        line-height: 1.6;
+        margin-top: 10px;
+    }
+
+    .action-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(235px, 1fr));
+        gap: 18px;
+    }
+
+    .action-card {
+        display: block;
+        text-decoration: none;
+        color: #f8fafc;
+        background: #0d1b2c;
+        border: 1px solid #1e293b;
+        border-radius: 16px;
+        padding: 25px;
+        min-height: 190px;
+        transition: border-color 0.2s ease,
+                    transform 0.2s ease;
+    }
+
+    .action-card:hover {
+        border-color: #67e8f9;
+        transform: translateY(-3px);
+    }
+
+    .action-icon {
+        width: 46px;
+        height: 46px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 12px;
+        background: #0c2635;
+        border: 1px solid #164e63;
+        font-size: 22px;
+        margin-bottom: 19px;
+    }
+
+    .action-card h3 {
+        font-size: 17px;
+        margin-bottom: 10px;
+    }
+
+    .action-card p {
+        color: #94a3b8;
+        font-size: 13px;
+        line-height: 1.7;
+    }
+
+    .profile-card {
+        background: #0d1b2c;
+        border: 1px solid #1e293b;
+        border-radius: 16px;
+        padding: 27px;
+    }
+
+    .profile-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+        gap: 25px;
+    }
+
+    .profile-item small {
+        display: block;
+        color: #94a3b8;
+        font-size: 12px;
+        margin-bottom: 8px;
+    }
+
+    .profile-item p {
+        color: #f8fafc;
+        font-size: 14px;
+        overflow-wrap: anywhere;
+    }
+
+    .empty-value {
+        color: #64748b !important;
+    }
+
+    @media (max-width: 600px) {
+        .dashboard {
+            padding: 35px 18px 55px;
+        }
+
+        .overview-card,
+        .profile-card {
+            padding: 20px;
+        }
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<main class="dashboard">
+
+    <!-- Welcome Section -->
+    <section class="welcome">
+        <span class="tag">YOUR PERSONAL LEARNING SPACE</span>
+
+        <h1>
+            Welcome back,
+            <span>{{ user.full_name.split()[0] }}</span>
+        </h1>
+
+        <p>
+            Your journey towards career readiness starts here.
+            Identify your skill gaps, build practical skills, and
+            take the next step towards your goals.
+        </p>
+    </section>
+
+    <!-- Overview -->
+    <h2 class="section-title">Your Overview</h2>
+
+    <section class="overview-grid">
+
+        <article class="overview-card">
+            <p class="card-label">Target Career</p>
+
+            <p class="card-value">
+                {{ user.target_career or "Not selected" }}
+            </p>
+
+            <p class="card-note">
+                Your career goal helps guide your learning journey.
+            </p>
+        </article>
+
+        <article class="overview-card">
+            <p class="card-label">Academic Performance</p>
+
+            <p class="card-value">
+                {% if user.cgpa is not none %}
+                    {{ "%.2f"|format(user.cgpa) }} CGPA
+                {% else %}
+                    Not added
+                {% endif %}
+            </p>
+
+            <p class="card-note">
+                Keep your academic profile updated.
+            </p>
+        </article>
+
+        <article class="overview-card">
+            <p class="card-label">Recommended Next Step</p>
+
+            <p class="card-value">Analyse Skills</p>
+
+            <p class="card-note">
+                Discover the skills you need for your chosen career.
+            </p>
+        </article>
+
+    </section>
+
+    <!-- Skill Development -->
+    <h2 class="section-title">Skill Development</h2>
+
+    <section class="action-grid">
+
+        <!-- Updated link: opens Student Categories -->
+        <a href="{{ url_for('student_categories') }}"
+           class="action-card">
+
+            <div class="action-icon">✦</div>
+
+            <h3>AI Skill Gap Analysis</h3>
+
+            <p>
+                Explore your learning category and identify the
+                skills you need to develop for your career goals.
+            </p>
+        </a>
+
+        <a href="#" class="action-card">
+            <div class="action-icon">◈</div>
+
+            <h3>Personalized Learning Planner</h3>
+
+            <p>
+                Organize your learning journey with a structured
+                plan designed around your goals.
+            </p>
+        </a>
+
+        <a href="#" class="action-card">
+            <div class="action-icon">◎</div>
+
+            <h3>Skill Corner</h3>
+
+            <p>
+                Connect with fellow learners, exchange knowledge,
+                and learn from each other's strengths.
+            </p>
+        </a>
+
+        <a href="#" class="action-card">
+            <div class="action-icon">▤</div>
+
+            <h3>Courses &amp; Resources</h3>
+
+            <p>
+                Explore learning materials, useful courses,
+                and certifications to improve your skills.
+            </p>
+        </a>
+
+    </section>
+
+    <!-- Academic Profile -->
+    <h2 class="section-title">Your Academic Profile</h2>
+
+    <section class="profile-card">
+
+        <div class="profile-grid">
+
+            <div class="profile-item">
+                <small>Full Name</small>
+                <p>{{ user.full_name }}</p>
+            </div>
+
+            <div class="profile-item">
+                <small>Email Address</small>
+                <p>{{ user.email }}</p>
+            </div>
+
+            <div class="profile-item">
+                <small>College</small>
+                <p class="{{ 'empty-value' if not user.college else '' }}">
+                    {{ user.college or "Not added yet" }}
+                </p>
+            </div>
+
+            <div class="profile-item">
+                <small>Branch</small>
+                <p class="{{ 'empty-value' if not user.branch else '' }}">
+                    {{ user.branch or "Not added yet" }}
+                </p>
+            </div>
+
+            <div class="profile-item">
+                <small>Current Semester</small>
+                <p>
+                    {{ user.semester if user.semester else "Not added yet" }}
+                </p>
+            </div>
+
+            <div class="profile-item">
+                <small>Target Career</small>
+                <p class="{{ 'empty-value' if not user.target_career else '' }}">
+                    {{ user.target_career or "Not selected yet" }}
+                </p>
+            </div>
+
+        </div>
+
+    </section>
+
+</main>
+{% endblock %}

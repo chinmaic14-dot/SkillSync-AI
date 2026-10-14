@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="SkillSync AI helps students discover career skill gaps and build personalized learning roadmaps.">
+    <title>SkillSync AI | Discover Your Potential</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #07111f;
+            color: #f8fafc;
+            min-height: 100vh;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 24px 8%;
+            border-bottom: 1px solid #1e293b;
+            gap: 20px;
+        }
+
+        .logo {
+            font-size: 25px;
+            font-weight: bold;
+            color: #67e8f9;
+            text-decoration: none;
+            white-space: nowrap;
+        }
+
+        nav a {
+            color: #cbd5e1;
+            text-decoration: none;
+            margin-left: 24px;
+            font-size: 14px;
+        }
+
+        nav a:hover {
+            color: #67e8f9;
+        }
+
+        .nav-signup {
+            display: inline-block;
+            padding: 11px 17px;
+            border-radius: 8px;
+            background: #67e8f9;
+            color: #082032 !important;
+            font-weight: bold;
+        }
+
+        .hero {
+            max-width: 1100px;
+            margin: auto;
+            padding: 110px 24px;
+            text-align: center;
+        }
+
+        .tag {
+            display: inline-block;
+            border: 1px solid #164e63;
+            background: #0c2635;
+            color: #67e8f9;
+            padding: 9px 16px;
+            border-radius: 30px;
+            font-size: 13px;
+            margin-bottom: 28px;
+        }
+
+        h1 {
+            font-size: clamp(40px, 7vw, 72px);
+            line-height: 1.12;
+            letter-spacing: -2px;
+            margin-bottom: 24px;
+        }
+
+        h1 span {
+            color: #67e8f9;
+        }
+
+        .description {
+            color: #94a3b8;
+            font-size: 17px;
+            line-height: 1.8;
+            max-width: 680px;
+            margin: 0 auto 36px;
+        }
+
+        .actions {
+            display: flex;
+            justify-content: center;
+            gap: 14px;
+            flex-wrap: wrap;
+        }
+
+        .button {
+            display: inline-block;
+            padding: 15px 25px;
+            border-radius: 9px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: transform 0.2s ease;
+        }
+
+        .button:hover {
+            transform: translateY(-2px);
+        }
+
+        .primary {
+            background: #67e8f9;
+            color: #082032;
+        }
+
+        .secondary {
+            border: 1px solid #334155;
+            color: #f8fafc;
+        }
+
+        .features {
+            max-width: 1050px;
+            margin: 0 auto 80px;
+            padding: 0 24px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 20px;
+        }
+
+        .feature {
+            background: #0d1b2c;
+            border: 1px solid #1e293b;
+            border-radius: 16px;
+            padding: 27px;
+            transition: border-color 0.2s ease;
+        }
+
+        .feature:hover {
+            border-color: #67e8f9;
+        }
+
+        .feature h2 {
+            font-size: 19px;
+            margin-bottom: 12px;
+        }
+
+        .feature p {
+            color: #94a3b8;
+            line-height: 1.7;
+            font-size: 14px;
+        }
+
+        .section-heading {
+            max-width: 750px;
+            margin: 0 auto 35px;
+            padding: 0 24px;
+            text-align: center;
+        }
+
+        .section-heading h2 {
+            font-size: clamp(28px, 4vw, 38px);
+            margin-bottom: 14px;
+        }
+
+        .section-heading h2 span {
+            color: #67e8f9;
+        }
+
+        .section-heading p {
+            color: #94a3b8;
+            line-height: 1.8;
+            font-size: 15px;
+        }
+
+        .how-section {
+            padding: 60px 0 10px;
+        }
+
+        .cta {
+            max-width: 1000px;
+            margin: 20px auto 80px;
+            padding: 40px 24px;
+            background: #0d1b2c;
+            border: 1px solid #1e293b;
+            border-radius: 16px;
+            text-align: center;
+        }
+
+        .cta h2 {
+            font-size: clamp(26px, 4vw, 36px);
+            margin-bottom: 15px;
+        }
+
+        .cta h2 span {
+            color: #67e8f9;
+        }
+
+        .cta p {
+            max-width: 650px;
+            margin: 0 auto 25px;
+            color: #94a3b8;
+            line-height: 1.8;
+        }
+
+        footer {
+            border-top: 1px solid #1e293b;
+            text-align: center;
+            padding: 25px;
+            color: #64748b;
+            font-size: 13px;
+            line-height: 1.8;
+        }
+
+        @media (max-width: 600px) {
+            nav {
+                padding: 20px;
+                flex-wrap: wrap;
+                gap: 15px;
+            }
+
+            nav a {
+                margin-left: 10px;
+            }
+
+            .hero {
+                padding: 75px 20px;
+            }
+
+            .nav-signup {
+                padding: 9px 12px;
+            }
+
+            .cta {
+                margin: 20px 20px 60px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav>
+        <a href="{{ url_for('home') }}" class="logo">
+            SkillSync AI
+        </a>
+
+        <div>
+            <a href="#features">Features</a>
+            <a href="#how-it-works">How It Works</a>
+            <a href="#about">About</a>
+            <a href="{{ url_for('login') }}">Login</a>
+            <a href="{{ url_for('sign_up') }}" class="nav-signup">
+                Sign Up →
+            </a>
+        </div>
+    </nav>
+
+    <main>
+
+        <section class="hero">
+            <div class="tag">AI-POWERED CAREER DEVELOPMENT</div>
+
+            <h1>
+                Your Skills.<br>
+                Your Future.<br>
+                <span>One Smart Path.</span>
+            </h1>
+
+            <p class="description">
+                Discover your skill gaps, identify the capabilities your
+                target career demands, and build a personalized learning
+                roadmap with SkillSync AI.
+            </p>
+
+            <div class="actions">
+                <a href="{{ url_for('sign_up') }}" class="button primary">
+                    Get Started →
+                </a>
+
+                <a href="{{ url_for('login') }}" class="button secondary">
+                    Login to Your Account
+                </a>
+            </div>
+        </section>
+
+        <section class="features" id="features">
+
+            <article class="feature">
+                <h2>01. Skill Gap Analysis</h2>
+                <p>
+                    Compare your current abilities with the skills needed
+                    for your chosen career and identify areas to improve.
+                </p>
+            </article>
+
+            <article class="feature">
+                <h2>02. Smart Learning Paths</h2>
+                <p>
+                    Organize your learning with structured priorities,
+                    resources, and actionable goals.
+                </p>
+            </article>
+
+            <article class="feature">
+                <h2>03. Peer Skill Exchange</h2>
+                <p>
+                    Connect with fellow students to share knowledge
+                    and practice useful skills.
+                </p>
+            </article>
+
+        </section>
+
+        <section class="how-section" id="how-it-works">
+
+            <div class="section-heading">
+                <h2>From Uncertainty to <span>Action.</span></h2>
+                <p>
+                    Set your career goal, discover your skill gaps,
+                    and follow a structured path towards career readiness.
+                </p>
+            </div>
+
+            <section class="features">
+
+                <article class="feature">
+                    <h2>Step 01. Define Your Goal</h2>
+                    <p>
+                        Share your academic background, current skills,
+                        and target career.
+                    </p>
+                </article>
+
+                <article class="feature">
+                    <h2>Step 02. Discover Your Gaps</h2>
+                    <p>
+                        Understand which skills you already have and
+                        which competencies you need to develop.
+                    </p>
+                </article>
+
+                <article class="feature">
+                    <h2>Step 03. Build Your Roadmap</h2>
+                    <p>
+                        Follow learning recommendations and work towards
+                        your career goals step by step.
+                    </p>
+                </article>
+
+            </section>
+
+        </section>
+
+        <section class="cta">
+            <h2>Build Skills with <span>Purpose.</span></h2>
+
+            <p>
+                Understand your potential. Focus on the right skills.
+                Make your learning count with SkillSync AI.
+            </p>
+
+            <div class="actions">
+                <a href="{{ url_for('sign_up') }}" class="button primary">
+                    Create Your Account →
+                </a>
+
+                <a href="{{ url_for('login') }}" class="button secondary">
+                    I Already Have an Account
+                </a>
+            </div>
+        </section>
+
+    </main>
+
+    <footer id="about">
+        <p>SkillSync AI — AI-powered skill discovery and career development.</p>
+        <p>© 2026 SkillSync AI · Learn smarter. Grow stronger.</p>
+    </footer>
+
+</body>
+</html>

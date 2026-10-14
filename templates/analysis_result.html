@@ -1,0 +1,234 @@
+{% extends "base.html" %}
+
+{% block title %}Skill Gap Analysis | SkillSync AI{% endblock %}
+
+{% block extra_css %}
+<style>
+    .result-page {
+        max-width: 1050px;
+        margin: auto;
+        padding: 55px 24px 80px;
+    }
+
+    .back-link {
+        display: inline-block;
+        margin-bottom: 28px;
+        color: #94a3b8;
+        text-decoration: none;
+        font-size: 14px;
+    }
+
+    .back-link:hover {
+        color: #67e8f9;
+    }
+
+    .result-header {
+        background: #0d1b2c;
+        border: 1px solid #1e293b;
+        border-radius: 18px;
+        padding: 32px;
+        margin-bottom: 25px;
+    }
+
+    .result-header .tag {
+        margin-bottom: 20px;
+    }
+
+    .result-header h1 {
+        font-size: clamp(32px, 5vw, 48px);
+        line-height: 1.2;
+        letter-spacing: -1.3px;
+        margin-bottom: 15px;
+    }
+
+    .result-header h1 span {
+        color: #67e8f9;
+    }
+
+    .result-header p {
+        color: #94a3b8;
+        font-size: 14px;
+        line-height: 1.9;
+    }
+
+    .report-card {
+        background: #0d1b2c;
+        border: 1px solid #1e293b;
+        border-radius: 18px;
+        padding: 30px;
+        margin-bottom: 22px;
+    }
+
+    .report-card h2 {
+        font-size: 21px;
+        margin-bottom: 20px;
+    }
+
+    .report-content {
+        color: #cbd5e1;
+        font-size: 14px;
+        line-height: 1.9;
+        overflow-wrap: anywhere;
+    }
+
+    .report-content h1,
+    .report-content h2,
+    .report-content h3,
+    .report-content h4 {
+        color: #67e8f9;
+        font-size: 17px;
+        letter-spacing: 0;
+        margin: 25px 0 10px;
+    }
+
+    .report-content h1:first-child,
+    .report-content h2:first-child,
+    .report-content h3:first-child {
+        margin-top: 0;
+    }
+
+    .report-content p {
+        margin-bottom: 14px;
+    }
+
+    .report-content ul,
+    .report-content ol {
+        padding-left: 23px;
+        margin: 12px 0 20px;
+    }
+
+    .report-content li {
+        margin-bottom: 8px;
+        padding-left: 4px;
+    }
+
+    .report-content strong {
+        color: #f8fafc;
+    }
+
+    .report-content a {
+        color: #67e8f9;
+        overflow-wrap: anywhere;
+    }
+
+    .report-content code {
+        color: #67e8f9;
+        background: #07111f;
+        padding: 2px 5px;
+        border-radius: 4px;
+    }
+
+    .report-content pre {
+        white-space: pre-wrap;
+        overflow-wrap: anywhere;
+        background: #07111f;
+        border: 1px solid #1e293b;
+        border-radius: 10px;
+        padding: 16px;
+        margin: 15px 0;
+    }
+
+    .result-actions {
+        display: flex;
+        gap: 14px;
+        flex-wrap: wrap;
+        margin-top: 25px;
+    }
+
+    .result-button {
+        display: inline-block;
+        padding: 13px 20px;
+        border-radius: 9px;
+        text-decoration: none;
+        font-size: 13px;
+        font-weight: bold;
+        transition: transform 0.2s ease;
+    }
+
+    .result-button:hover {
+        transform: translateY(-2px);
+    }
+
+    .primary-button {
+        background: #67e8f9;
+        color: #082032;
+    }
+
+    .secondary-button {
+        border: 1px solid #334155;
+        color: #f8fafc;
+    }
+
+    .report-note {
+        color: #64748b;
+        font-size: 12px;
+        line-height: 1.8;
+        margin-top: 22px;
+    }
+
+    @media (max-width: 600px) {
+        .result-page {
+            padding: 35px 18px 60px;
+        }
+
+        .result-header,
+        .report-card {
+            padding: 22px;
+        }
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<main class="result-page">
+
+    <a href="{{ url_for('dashboard') }}" class="back-link">
+        &larr; Back to Dashboard
+    </a>
+
+    <header class="result-header">
+        <span class="tag">PERSONALIZED CAREER INSIGHTS</span>
+
+        <h1>
+            Your Skill Gap <span>Analysis</span>
+        </h1>
+
+        <p>
+            Your report is based on the skills and career information
+            you provided. Use these recommendations to plan your next
+            steps towards career readiness.
+        </p>
+
+        <div class="result-actions">
+            <a
+                href="{{ url_for('skilled_stuck') }}"
+                class="result-button primary-button"
+            >
+                Create Another Analysis
+            </a>
+
+            <a
+                href="{{ url_for('student_categories') }}"
+                class="result-button secondary-button"
+            >
+                Explore Categories
+            </a>
+        </div>
+    </header>
+
+    <section class="report-card">
+        <h2>AI-Generated Career Report</h2>
+
+        <div class="report-content">
+            {{ analysis.recommendations | markdown_to_html | safe }}
+        </div>
+
+        <p class="report-note">
+            AI-generated guidance may contain errors. Verify learning
+            resources and career requirements independently. This report
+            is advisory and does not guarantee employment or placement.
+        </p>
+    </section>
+
+</main>
+{% endblock %}

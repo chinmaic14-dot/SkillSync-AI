@@ -1,0 +1,247 @@
+{% extends "base.html" %}
+
+{% block title %}Create Account | SkillSync AI{% endblock %}
+
+{% block extra_css %}
+<style>
+    .auth-wrapper {
+        max-width: 560px;
+        margin: 55px auto 70px;
+        padding: 0 22px;
+    }
+
+    .auth-card {
+        padding: 35px;
+        background: #0d1b2c;
+        border: 1px solid #1e293b;
+        border-radius: 18px;
+    }
+
+    .auth-heading {
+        margin-bottom: 28px;
+        text-align: center;
+    }
+
+    .auth-heading .tag {
+        margin-bottom: 18px;
+    }
+
+    .auth-heading h1 {
+        margin-bottom: 12px;
+        font-size: 34px;
+        letter-spacing: -1px;
+    }
+
+    .auth-heading p {
+        color: #94a3b8;
+        font-size: 14px;
+        line-height: 1.7;
+    }
+
+    .form-group {
+        margin-bottom: 19px;
+    }
+
+    .form-group label {
+        display: block;
+        margin-bottom: 8px;
+        color: #e2e8f0;
+        font-size: 14px;
+        font-weight: bold;
+    }
+
+    .form-group input,
+    .form-group select {
+        width: 100%;
+        padding: 13px 14px;
+        background: #07111f;
+        color: #f8fafc;
+        border: 1px solid #334155;
+        border-radius: 9px;
+        outline: none;
+        font: inherit;
+        font-size: 14px;
+    }
+
+    .form-group input:focus,
+    .form-group select:focus {
+        border-color: #67e8f9;
+        box-shadow: 0 0 0 3px rgba(103, 232, 249, 0.08);
+    }
+
+    .form-group input::placeholder {
+        color: #64748b;
+    }
+
+    .form-submit {
+        width: 100%;
+        margin-top: 8px;
+        border: none;
+        cursor: pointer;
+        font-size: 15px;
+    }
+
+    .auth-switch {
+        margin-top: 24px;
+        color: #94a3b8;
+        text-align: center;
+        font-size: 14px;
+    }
+
+    .auth-switch a {
+        color: #67e8f9;
+        text-decoration: none;
+        font-weight: bold;
+    }
+
+    .auth-switch a:hover {
+        text-decoration: underline;
+    }
+
+    .form-note {
+        margin-top: 15px;
+        color: #64748b;
+        font-size: 12px;
+        line-height: 1.6;
+        text-align: center;
+    }
+
+    @media (max-width: 600px) {
+        .auth-wrapper {
+            margin-top: 35px;
+        }
+
+        .auth-card {
+            padding: 24px 20px;
+        }
+
+        .auth-heading h1 {
+            font-size: 29px;
+        }
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<section class="auth-wrapper">
+    <div class="auth-card">
+
+        <div class="auth-heading">
+            <div class="tag">YOUR JOURNEY STARTS HERE</div>
+            <h1>Create your account</h1>
+            <p>
+                Join SkillSync AI to discover your skill gaps,
+                plan your learning, and work towards your career goals.
+            </p>
+        </div>
+
+        <form method="POST" action="{{ url_for('sign_up') }}">
+
+            <div class="form-group">
+                <label for="full_name">Full name</label>
+                <input
+                    type="text"
+                    id="full_name"
+                    name="full_name"
+                    placeholder="Enter your full name"
+                    autocomplete="name"
+                    maxlength="120"
+                    required
+                >
+            </div>
+
+            <div class="form-group">
+                <label for="email">College or personal email</label>
+                <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    placeholder="you@example.com"
+                    autocomplete="email"
+                    maxlength="255"
+                    required
+                >
+            </div>
+
+            <div class="form-group">
+                <label for="college">College name</label>
+                <input
+                    type="text"
+                    id="college"
+                    name="college"
+                    placeholder="Enter your college name"
+                    maxlength="150"
+                >
+            </div>
+
+            <div class="form-group">
+                <label for="branch">Department / branch</label>
+                <select id="branch" name="branch">
+                    <option value="">Select your branch</option>
+                    <option value="CSE">Computer Science and Engineering</option>
+                    <option value="ISE">Information Science and Engineering</option>
+                    <option value="AIML">AI and Machine Learning</option>
+                    <option value="ECE">Electronics and Communication</option>
+                    <option value="EEE">Electrical and Electronics</option>
+                    <option value="ME">Mechanical Engineering</option>
+                    <option value="CE">Civil Engineering</option>
+                    <option value="Other">Other</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="semester">Current semester</label>
+                <select id="semester" name="semester">
+                    <option value="">Select your semester</option>
+                    {% for number in range(1, 9) %}
+                        <option value="{{ number }}">
+                            Semester {{ number }}
+                        </option>
+                    {% endfor %}
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="password">Create password</label>
+                <input
+                    type="password"
+                    id="password"
+                    name="password"
+                    placeholder="At least 8 characters"
+                    autocomplete="new-password"
+                    minlength="8"
+                    required
+                >
+            </div>
+
+            <div class="form-group">
+                <label for="confirm_password">Confirm password</label>
+                <input
+                    type="password"
+                    id="confirm_password"
+                    name="confirm_password"
+                    placeholder="Re-enter your password"
+                    autocomplete="new-password"
+                    minlength="8"
+                    required
+                >
+            </div>
+
+            <button type="submit" class="button primary form-submit">
+                Create My Account →
+            </button>
+
+            <p class="form-note">
+                Your password will be securely hashed before it is stored.
+            </p>
+
+        </form>
+
+        <p class="auth-switch">
+            Already have an account?
+            <a href="{{ url_for('login') }}">Log in</a>
+        </p>
+
+    </div>
+</section>
+{% endblock %}

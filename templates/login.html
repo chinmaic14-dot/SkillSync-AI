@@ -1,0 +1,186 @@
+{% extends "base.html" %}
+
+{% block title %}Login | SkillSync AI{% endblock %}
+
+{% block extra_css %}
+<style>
+    .auth-wrapper {
+        max-width: 500px;
+        margin: 65px auto 80px;
+        padding: 0 22px;
+    }
+
+    .auth-card {
+        padding: 35px;
+        background: #0d1b2c;
+        border: 1px solid #1e293b;
+        border-radius: 18px;
+    }
+
+    .auth-heading {
+        margin-bottom: 30px;
+        text-align: center;
+    }
+
+    .auth-heading .tag {
+        margin-bottom: 18px;
+    }
+
+    .auth-heading h1 {
+        margin-bottom: 12px;
+        font-size: 34px;
+        letter-spacing: -1px;
+    }
+
+    .auth-heading p {
+        color: #94a3b8;
+        font-size: 14px;
+        line-height: 1.7;
+    }
+
+    .form-group {
+        margin-bottom: 21px;
+    }
+
+    .form-group label {
+        display: block;
+        margin-bottom: 8px;
+        color: #e2e8f0;
+        font-size: 14px;
+        font-weight: bold;
+    }
+
+    .form-group input {
+        width: 100%;
+        padding: 14px;
+        background: #07111f;
+        color: #f8fafc;
+        border: 1px solid #334155;
+        border-radius: 9px;
+        outline: none;
+        font-family: Arial, sans-serif;
+        font-size: 14px;
+    }
+
+    .form-group input:focus {
+        border-color: #67e8f9;
+        box-shadow: 0 0 0 3px rgba(103, 232, 249, 0.08);
+    }
+
+    .form-group input::placeholder {
+        color: #64748b;
+    }
+
+    .form-submit {
+        width: 100%;
+        margin-top: 8px;
+        border: none;
+        cursor: pointer;
+        font-family: Arial, sans-serif;
+        font-size: 15px;
+    }
+
+    .auth-switch {
+        margin-top: 25px;
+        color: #94a3b8;
+        text-align: center;
+        font-size: 14px;
+    }
+
+    .auth-switch a {
+        color: #67e8f9;
+        font-weight: bold;
+        text-decoration: none;
+    }
+
+    .auth-switch a:hover {
+        text-decoration: underline;
+    }
+
+    .login-note {
+        margin-top: 22px;
+        padding: 14px;
+        border: 1px solid #1e293b;
+        border-radius: 10px;
+        background: #07111f;
+        color: #94a3b8;
+        text-align: center;
+        font-size: 12px;
+        line-height: 1.7;
+    }
+
+    @media (max-width: 600px) {
+        .auth-wrapper {
+            margin-top: 40px;
+        }
+
+        .auth-card {
+            padding: 25px 20px;
+        }
+
+        .auth-heading h1 {
+            font-size: 29px;
+        }
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<section class="auth-wrapper">
+    <div class="auth-card">
+
+        <div class="auth-heading">
+            <div class="tag">WELCOME BACK</div>
+            <h1>Login to SkillSync</h1>
+            <p>
+                Continue your learning journey and take the next
+                step towards your career goals.
+            </p>
+        </div>
+
+        <form method="POST" action="{{ url_for('login') }}">
+
+            <div class="form-group">
+                <label for="email">Email address</label>
+                <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    placeholder="Enter your registered email"
+                    autocomplete="email"
+                    maxlength="255"
+                    required
+                >
+            </div>
+
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input
+                    type="password"
+                    id="password"
+                    name="password"
+                    placeholder="Enter your password"
+                    autocomplete="current-password"
+                    required
+                >
+            </div>
+
+            <button type="submit" class="button primary form-submit">
+                Login to Your Account →
+            </button>
+
+        </form>
+
+        <div class="login-note">
+            Your career journey, learning progress, and skill development
+            come together in one place.
+        </div>
+
+        <p class="auth-switch">
+            New to SkillSync AI?
+            <a href="{{ url_for('sign_up') }}">Create an account</a>
+        </p>
+
+    </div>
+</section>
+{% endblock %}

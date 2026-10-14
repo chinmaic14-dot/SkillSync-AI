@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>{% block title %}SkillSync AI{% endblock %}</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+
+    {% block extra_css %}{% endblock %}
+</head>
+<body>
+
+    <nav>
+        <a href="{{ url_for('home') }}"
+           class="logo"
+           style="text-decoration: none;">
+            SkillSync AI
+        </a>
+
+        <div>
+            <a href="{{ url_for('home') }}">Home</a>
+
+            {% if session.get('user_id') %}
+                <a href="{{ url_for('dashboard') }}">Dashboard</a>
+                <a href="{{ url_for('logout') }}">Logout</a>
+            {% else %}
+                <a href="{{ url_for('login') }}">Login</a>
+                <a href="{{ url_for('sign_up') }}">Sign Up</a>
+            {% endif %}
+        </div>
+    </nav>
+
+    <main>
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                <section style="max-width: 700px; margin: 24px auto; padding: 0 20px;">
+                    {% for category, message in messages %}
+                        <div style="
+                            padding: 14px 18px;
+                            margin-bottom: 10px;
+                            border: 1px solid #1e293b;
+                            border-radius: 10px;
+                            background: #0d1b2c;
+                            color: #67e8f9;
+                        ">
+                            {{ message }}
+                        </div>
+                    {% endfor %}
+                </section>
+            {% endif %}
+        {% endwith %}
+
+        {% block content %}{% endblock %}
+    </main>
+
+    <footer>
+        © 2026 SkillSync AI · Learn smarter. Grow stronger.
+    </footer>
+
+</body>
+</html>

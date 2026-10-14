@@ -1,0 +1,255 @@
+{% extends "base.html" %}
+
+{% block title %}Student Categories | SkillSync AI{% endblock %}
+
+{% block extra_css %}
+<style>
+    .categories-page {
+        max-width: 1150px;
+        margin: auto;
+        padding: 65px 24px 85px;
+    }
+
+    .categories-header {
+        text-align: center;
+        margin-bottom: 50px;
+    }
+
+    .categories-header .tag {
+        margin-bottom: 22px;
+    }
+
+    .categories-header h1 {
+        font-size: clamp(34px, 5vw, 55px);
+        line-height: 1.15;
+        letter-spacing: -1.5px;
+        margin-bottom: 18px;
+    }
+
+    .categories-header h1 span {
+        color: #67e8f9;
+    }
+
+    .categories-header p {
+        max-width: 700px;
+        margin: auto;
+        color: #94a3b8;
+        font-size: 15px;
+        line-height: 1.9;
+    }
+
+    .categories-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+        gap: 22px;
+    }
+
+    .category-card {
+        display: flex;
+        flex-direction: column;
+        text-decoration: none;
+        color: #f8fafc;
+        background: #0d1b2c;
+        border: 1px solid #1e293b;
+        border-radius: 18px;
+        padding: 28px;
+        min-height: 320px;
+        transition: transform 0.2s ease,
+                    border-color 0.2s ease;
+    }
+
+    .category-card:hover {
+        transform: translateY(-5px);
+        border-color: #67e8f9;
+    }
+
+    .category-number {
+        color: #67e8f9;
+        font-size: 12px;
+        font-weight: bold;
+        letter-spacing: 1.5px;
+        margin-bottom: 25px;
+    }
+
+    .category-icon {
+        width: 54px;
+        height: 54px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: #0c2635;
+        border: 1px solid #164e63;
+        border-radius: 14px;
+        font-size: 25px;
+        margin-bottom: 23px;
+    }
+
+    .category-card h2 {
+        font-size: 21px;
+        line-height: 1.4;
+        margin-bottom: 13px;
+    }
+
+    .category-card p {
+        color: #94a3b8;
+        font-size: 14px;
+        line-height: 1.8;
+        margin-bottom: 25px;
+    }
+
+    .category-action {
+        margin-top: auto;
+        color: #67e8f9;
+        font-size: 13px;
+        font-weight: bold;
+    }
+
+    .category-action span {
+        margin-left: 6px;
+    }
+
+    .categories-note {
+        margin-top: 35px;
+        padding: 22px;
+        background: #0d1b2c;
+        border: 1px solid #1e293b;
+        border-radius: 14px;
+        color: #94a3b8;
+        font-size: 13px;
+        line-height: 1.8;
+        text-align: center;
+    }
+
+    .categories-note strong {
+        color: #f8fafc;
+    }
+
+    .back-link {
+        display: inline-block;
+        margin-bottom: 28px;
+        color: #94a3b8;
+        text-decoration: none;
+        font-size: 14px;
+    }
+
+    .back-link:hover {
+        color: #67e8f9;
+    }
+
+    @media (max-width: 600px) {
+        .categories-page {
+            padding: 40px 18px 60px;
+        }
+
+        .categories-header {
+            margin-bottom: 35px;
+        }
+
+        .category-card {
+            padding: 24px;
+            min-height: 290px;
+        }
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<main class="categories-page">
+
+    <a href="{{ url_for('dashboard') }}" class="back-link">
+        &larr; Back to Dashboard
+    </a>
+
+    <header class="categories-header">
+        <span class="tag">YOUR LEARNING JOURNEY STARTS HERE</span>
+
+        <h1>
+            Find Your <span>Learning Path</span>
+        </h1>
+
+        <p>
+            Every student has a different starting point.
+            Choose the category that best describes your current
+            situation so SkillSync can guide your next steps
+            towards career readiness.
+        </p>
+    </header>
+
+    <section class="categories-grid">
+
+        <!-- CATEGORY 01 -->
+        <a href="{{ url_for('skilled_stuck') }}"
+           class="category-card">
+
+            <div class="category-number">CATEGORY 01</div>
+
+            <div class="category-icon">◈</div>
+
+            <h2>Skilled but Stuck</h2>
+
+            <p>
+                You already have some technical or academic skills,
+                but you are unsure what to learn next or how to
+                prepare for your desired career.
+            </p>
+
+            <div class="category-action">
+                Explore Your Path <span>&rarr;</span>
+            </div>
+
+        </a>
+
+        <!-- CATEGORY 02 -->
+        <a href="#"
+           class="category-card">
+
+            <div class="category-number">CATEGORY 02</div>
+
+            <div class="category-icon">✦</div>
+
+            <h2>Starting from Scratch</h2>
+
+            <p>
+                You want to build your skills from the beginning.
+                Discover foundational concepts, beginner-friendly
+                resources, and a structured learning direction.
+            </p>
+
+            <div class="category-action">
+                Coming Next <span>&rarr;</span>
+            </div>
+
+        </a>
+
+        <!-- CATEGORY 03 -->
+        <a href="#"
+           class="category-card">
+
+            <div class="category-number">CATEGORY 03</div>
+
+            <div class="category-icon">◎</div>
+
+            <h2>Graduate Without Job-Ready Skills</h2>
+
+            <p>
+                You have academic knowledge but need practical
+                experience, industry-relevant skills, projects,
+                and interview preparation to become job-ready.
+            </p>
+
+            <div class="category-action">
+                Coming Next <span>&rarr;</span>
+            </div>
+
+        </a>
+
+    </section>
+
+    <div class="categories-note">
+        <strong>Your journey, your pace.</strong>
+        SkillSync is designed to help you identify where you are,
+        understand what you need, and take practical steps forward.
+    </div>
+
+</main>
+{% endblock %}

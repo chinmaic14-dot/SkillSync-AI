@@ -1,0 +1,7 @@
+Flask
+Flask-SQLAlchemy
+python-dotenv
+requests
+gunicorn
+Werkzeug
+Markdown
